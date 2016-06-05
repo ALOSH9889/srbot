@@ -1,0 +1,9 @@
+{
+    "firstRunMessage": "This is SRBot connecting for the first time.\n Message me for more information on what I can do, or type `srhelp`",
+    "help": {
+        "info": "Type `srhelp` for this message, or just ask me for help.\n\n* `srhelp trac` for information about Trac.\n* `srhelp gerrit` for information about Gerrit.",
+        "trac": "You can use `trac:N` or `t:N` to get a link to https://studentrobotics.org/trac/ticket/N.",
+        "gerrit": "You can use `gerrit:N` or `ger:N` or `g:N` to get a link to https://www.studentrobotics.org/gerrit/#/c/N/."
+    }
+
+}
