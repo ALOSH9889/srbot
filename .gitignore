@@ -1,2 +1,4 @@
 node_modules/
 api-key
+node_modules
+data/srdata.db
