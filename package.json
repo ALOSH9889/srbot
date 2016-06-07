@@ -24,7 +24,9 @@
   },
   "homepage": "https://github.com/MarsCapone/srbot#readme",
   "dependencies": {
+    "botkit": "^0.2.0",
     "jayson": "^2.0.1",
+    "natural": "^0.4.0",
     "node-metainspector": "^1.3.0",
     "node-wit": "^3.3.2",
     "request": "^2.72.0",
