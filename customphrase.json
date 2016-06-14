@@ -1,0 +1,34 @@
+{
+  "trac": [
+    "give me info on track ticket 340",
+    "tell me about trac",
+    "tell me about t247"
+  ],
+  "help": [
+    "can i have some help?",
+    "what commands can i give you?",
+    "help",
+    "sr help",
+    "srhelp",
+    "helpme",
+    "help me please",
+    "please help",
+    "please give me instructions"
+  ],
+  "about": [
+    "Tell me about yourself.",
+    "Who made you.",
+    "Who made you?",
+    "Where can I find out more about you?",
+    "What is srbot?",
+    "What language are you programmed in?"
+  ],
+  "gerrit": [
+    "g:2651",
+    "ger:2650",
+    "gerrit",
+    "gerrit 2650",
+    "tell me about gerrit",
+    "what is gerrit"
+  ]
+}
