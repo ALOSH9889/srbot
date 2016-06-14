@@ -10,9 +10,10 @@ module.exports = function (skill, info, bot, message) {
         helpTopics = 'Here are the topics I can help you with:\n';
         var files = fs.readdirSync(path.resolve(process.cwd(), 'skills'));
         var files = files.map(function (file) {
-            return file.split('.')[0];
+            return '`' + file.split('.')[0]; + '`';
         });
-        helpTopics += files.join('`, `');
+        helpTopics += files.join(', ');
+        helpTopics += '`general`'
         helpTopics += '`.';
         convo.say(helpTopics);
         convo.ask('Which of those do you want help with? Or enter `done` to finish with help.', responses);
@@ -35,9 +36,20 @@ var responses = [
         }
     },
     {
+        pattern: 'general',
+        callback: function (response, convo) {
+            convo.say('I am a developing bot to help out with SR related matters.');
+            convo.say('At the moment I do a bit of natural language parsing using https://npmjs.com/package/natural.');
+            convo.say('I can also link to things like trac and gerrit.');
+            reprompt(convo);
+            convo.next();
+        }
+    },
+    {
         pattern: 'trac',
         callback: function (response, convo) {
-            convo.say('I know a bit about trac, but I can\'t be bothered to tell you about it right now. Try again later.')
+            convo.say('You can ask me about trac and I will try to help.');
+            conso.say('I will also try to link to trac tickets, when you post in any channel I am in.');
             reprompt(convo);
             convo.next();
         }
@@ -45,7 +57,8 @@ var responses = [
     {
         pattern: 'gerrit',
         callback: function (response, convo) {
-            convo.say('I know a bit about gerrit, but I can\'t be bothered to tell you about it right now. Try again later.')
+            convo.say('If you ask me about gerrit, I will try to help.');
+            convo.say('I can also link to gerrit commits, when you post them in any channel I am also in.');
             reprompt(convo);
             convo.next();
         }
