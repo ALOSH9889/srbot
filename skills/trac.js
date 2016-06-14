@@ -13,7 +13,9 @@ module.exports = function (skill, info, bot, message) {
     if (url) {
         trac.getMessage(url, function (err, res) {
             if (err) throw err;
-            bot.reply(res);
+            try {
+                bot.reply(res);
+            } catch (err); //TODO: find out why removing this breaks things.
         });
     } else {
         bot.startConversation(message, function (err, convo) {
@@ -43,9 +45,7 @@ var aboutTrac = function (response, convo) {
         {
             pattern: '^([0-9]+)$',
             callback: function (response, convo) {
-                console.log('interpreted as number');
                 var url = 'https://studentrobotics.org/trac' + '/ticket/' + response.text;
-                console.log('url is: ' + url);
                 trac.getMessage(url, function (err, res) {
                     if (err) throw err;
                     convo.say(res);
