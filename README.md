@@ -17,26 +17,12 @@ BOT_API_KEY=<api-key> node bin/bot.js
 >>> BOT_API_KEY=XXXX-XXXXXXXXXXX-XXXXXXXXXXXXXXXXXXXXX node bin/bot.js
 ```
 
-
-
 ## Features
 
-1. Help
-2. Trac
-3. Gerrit
-4. Google Groups
+### NLP
 
+SRBot has natural language parsing using [natural](https://npmjs.org/package/natural). If you ask SRBot for help, it will tell you what else it can be queried about. At the moment the parsing is not very advanced, so if SRBot tells you the type of answer it is looking for, and you don't use, probably nothing will happen.
 
-### 1 Help
+### Linking
 
-`/srhelp` for how to use srbot.
-
-### 2 Trac
-
-You can use `trac:N` or `t:N` to get a link to https://studentrobotics.org/trac/ticket/N.
-e.g. `trac:201` => https://studentrobotics.org/trac/ticket/201
-
-### 3 Gerrit
-
-You can use `gerrit:N` or `ger:N` or `g:N` to get a link to https://www.studentrobotics.org/gerrit/#/c/N/.
-e.g. `gerrit:2654` => https://www.studentrobotics.org/gerrit/#/c/2654/
+SRBot can also link to trac tickets and gerrit commits.
