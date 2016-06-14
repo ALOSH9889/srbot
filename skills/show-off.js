@@ -1,3 +1,8 @@
 module.exports = function (skill, info, bot, message) {
-    bot.reply(message, 'I understood this as `' + skill + '`, but I am not currently configured to do anything.');
+    var responses = [
+        'Stop showing off.',
+        'No one likes a show off.',
+    ];
+    var chosenResponse = responses[Math.floor(Math.random() * responses.length)];
+    bot.reply(message, chosenResponse);
 };
