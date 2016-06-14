@@ -1,6 +1,7 @@
 var fs = require('fs.extra');
 var path = require('path');
 var winston = require('winston');
+var sleep = require('sleep');
 
 module.exports = function (skill, info, bot, message) {
     winston.log('info', 'Running code for \'help\'.');
@@ -10,11 +11,11 @@ module.exports = function (skill, info, bot, message) {
         helpTopics = 'Here are the topics I can help you with:\n';
         var files = fs.readdirSync(path.resolve(process.cwd(), 'skills'));
         var files = files.map(function (file) {
-            return '`' + file.split('.')[0]; + '`';
+            return '`' + file.split('.')[0] + '`';
         });
         helpTopics += files.join(', ');
-        helpTopics += '`general`'
-        helpTopics += '`.';
+        helpTopics += ', `general`'
+        helpTopics += '.';
         convo.say(helpTopics);
         convo.ask('Which of those do you want help with? Or enter `done` to finish with help.', responses);
         convo.next();
@@ -75,6 +76,16 @@ var responses = [
                 convo.say('I\'m not going to repeat myself.');
                 repeater += 1;
             }
+            reprompt(convo);
+            convo.next();
+        }
+    },
+    {
+        pattern: 'about',
+        callback: function (response, convo) {
+            convo.say('It seems I don\'t actually know about that.');
+            sleep.sleep(3);
+            convo.say('Joking, I can actually tell you about myself if you ask me. You\'ll have to end this help conversation first though (with `done`).');
             reprompt(convo);
             convo.next();
         }
