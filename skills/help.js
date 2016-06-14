@@ -22,6 +22,20 @@ module.exports = function (skill, info, bot, message) {
     });
 };
 
+var helpPrompt = function (response, convo) {
+    helpTopics = 'Here are the topics I can help you with:\n';
+    var files = fs.readdirSync(path.resolve(process.cwd(), 'skills'));
+    var files = files.map(function (file) {
+        return '`' + file.split('.')[0] + '`';
+    });
+    helpTopics += files.join(', ');
+    helpTopics += ', `general`'
+    helpTopics += '.';
+    convo.say(helpTopics);
+    convo.ask('Which of those do you want help with? Or enter `done` to finish with help.', responses);
+    convo.next();
+}
+
 var reprompt = function (convo) {
     convo.ask('Anything else?', responses);
     convo.next();
@@ -67,11 +81,15 @@ var responses = [
     {
         pattern: 'help',
         callback: function (response, convo) {
-            if (repeater > 2) {
+            if(repeater > 5) {
+                repeater = 0;
+                helpPrompt(response, convo);
+            } else if (repeater > 3) {
+                convo.say('This is getting ridiculous now. Just type `done` and be over with it.');
+                repeater += 1
+            } else if (repeater > 1) {
                 convo.say('Very funny.');
                 repeater += 1
-            } else if (repeater > 5) {
-                convo.say('This is getting ridiculous now. Just type `done` and be over with it.');
             } else {
                 convo.say('I\'m not going to repeat myself.');
                 repeater += 1;
